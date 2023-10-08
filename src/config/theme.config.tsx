@@ -33,15 +33,6 @@ const theme = createTheme({
     fontFamily: themePalette.FONT_GLOBAL,
   },
   components: {
-    MuiButton: {
-      defaultProps: {
-        style: {
-          textTransform: 'none',
-          boxShadow: 'none',
-          borderRadius: '0,5em',
-        },
-      },
-    },
     MuiAlert: {
       defaultProps: {
         style: {

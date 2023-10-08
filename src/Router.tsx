@@ -1,9 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { RouterLayout } from './common/RouterLayout'
-import { HomePage } from './pages/home/HomePage'
-import { LoginPage } from './pages/login/LoginPage'
 import { RootPage } from './pages/root/RootPage'
-// import { LoginDialogProvider } from './context/LoginDialogContext/LoginDialogProvider'
+import { DefaultCalendarPage } from './pages/Calendar/DefaultCalendarPage'
 
 export const AppRouter = () => {
   return (
@@ -13,16 +11,12 @@ export const AppRouter = () => {
         element={<RootPage />}
       ></Route>
       <Route
-        path={'/login'}
-        element={<LoginPage />}
-      ></Route>
-      <Route
-        path={'/home'}
+        path={'/calendario'}
         element={<RouterLayout />}
       >
         <Route
-          path='/home'
-          element={<HomePage />}
+          path='/calendario'
+          element={<DefaultCalendarPage />}
         ></Route>
       </Route>
     </Routes>

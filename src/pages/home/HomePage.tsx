@@ -11,7 +11,7 @@ export const HomePage: FC<object> = () => {
   return (
     <>
       <Container
-        sx={{ mt: 9 }}
+        sx={{ mt: 1 }}
         maxWidth={'xl'}
       >
         <Button

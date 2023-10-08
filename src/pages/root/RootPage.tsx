@@ -2,10 +2,13 @@ import { Box, Button, Grid, Stack, Typography } from '@mui/material'
 import { LoginDialog, RegisterDialog } from '../../components'
 import { useState } from 'react'
 import { UserLogin, UserRegister } from '../../types/User'
+import { useNavigate } from 'react-router-dom'
 
+// const url = process.env.BASE_URL
 export const RootPage = () => {
   const [openLoginDialog, setOpenLoginDialog] = useState(false)
   const [openRegisterDialog, setOpenRegisterDialog] = useState(false)
+  const navigate = useNavigate()
 
   const handleOpenLoginDialog = () => {
     setOpenLoginDialog(true)
@@ -20,11 +23,37 @@ export const RootPage = () => {
     setOpenRegisterDialog(false)
   }
   const handleLogin = (user: UserLogin) => {
-    alert(`${user.email}-${user.password}`)
+    fetch(`http://localhost:1337/api/auth/local`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        identifier: user.email,
+        password: user.password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error))
     handleCloseLoginDialog()
+    navigate('/home')
   }
   const handleRegister = (user: UserRegister) => {
-    alert(`${user.email}-${user.name}-${user.lastName}-${user.carnetId}`)
+    fetch(`http://localhost:1337/api/auth/local/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: user.name,
+        email: user.email,
+        password: user.password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error))
     handleCloseRegisterDialog()
   }
 

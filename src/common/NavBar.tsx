@@ -4,16 +4,22 @@ import {
   Button,
   Container,
   Grid,
+  IconButton,
   Stack,
   Toolbar,
   Typography,
 } from '@mui/material'
+import MenuIcon from '@mui/icons-material/Menu'
 import { FC } from 'react'
 
-export const NavBar: FC<object> = () => {
+type NavBarProps = {
+  handleDrawerOpen: () => void
+}
+
+export const NavBar: FC<NavBarProps> = ({ handleDrawerOpen }) => {
   return (
     <Box>
-      <AppBar>
+      <AppBar position={'sticky'}>
         <Toolbar>
           <Container maxWidth={'xl'}>
             <Grid
@@ -22,7 +28,21 @@ export const NavBar: FC<object> = () => {
               alignItems={'center'}
             >
               <Grid item>
-                <Typography>K-lendar</Typography>
+                <Stack
+                  spacing={2}
+                  direction={'row'}
+                  alignItems={'center'}
+                >
+                  <IconButton
+                    color='inherit'
+                    aria-label='open drawer'
+                    edge='start'
+                    onClick={handleDrawerOpen}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  <Typography>K-lendar</Typography>
+                </Stack>
               </Grid>
               <Grid item>
                 <Stack
