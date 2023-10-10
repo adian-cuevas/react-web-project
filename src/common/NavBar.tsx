@@ -41,7 +41,7 @@ export const NavBar: FC<NavBarProps> = ({ handleDrawerOpen }) => {
                   >
                     <MenuIcon />
                   </IconButton>
-                  <Typography>K-lendar</Typography>
+                  <Typography variant={'h4'}>K-lendar</Typography>
                 </Stack>
               </Grid>
               <Grid item>

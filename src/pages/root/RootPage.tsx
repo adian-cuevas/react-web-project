@@ -34,10 +34,14 @@ export const RootPage = () => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data)
+        if (!data?.error) {
+          handleCloseLoginDialog()
+          navigate('/calendario')
+        }
+      })
       .catch((error) => console.error(error))
-    handleCloseLoginDialog()
-    navigate('/home')
   }
   const handleRegister = (user: UserRegister) => {
     fetch(`http://localhost:1337/api/auth/local/register`, {
@@ -108,25 +112,25 @@ export const RootPage = () => {
       </Grid>
       <Box sx={{ position: 'absolute', bottom: '-15px', right: '0px' }}>
         <img
-          src='/public/Responsive Calendar.png'
+          src='/Responsive Calendar.png'
           alt='Foto de Calendario'
         />
       </Box>
       <Box sx={{ position: 'absolute', top: '40px', right: '50px' }}>
         <img
-          src='/public/Frame 65.png'
+          src='/Frame 65.png'
           alt='Calendario pequeño'
         />
       </Box>
       <Box sx={{ position: 'absolute', bottom: '-10px', right: '0px' }}>
         <img
-          src='/public/Responsive Calendar (2).png'
+          src='/Responsive Calendar (2).png'
           alt='Calendario pequeño'
         />
       </Box>
       <Box sx={{ position: 'absolute', bottom: '-10px', left: '50px' }}>
         <img
-          src='/public/Responsive Calendar (1).png'
+          src='/Responsive Calendar (1).png'
           alt='Calendario pequeño'
         />
       </Box>
